@@ -1,0 +1,261 @@
+/* Responsive Design Utilities */
+@layer utilities {
+  /* Container responsive padding */
+  .container-responsive {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Responsive typography */
+  .text-responsive-title {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+  
+  .text-responsive-subtitle {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+  
+  /* Responsive grid columns */
+  .grid-responsive {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+  
+  /* Responsive spacing */
+  .section-responsive {
+    @apply py-8 sm:py-12 md:py-16 lg:py-20;
+  }
+  
+  /* Hide elements based on screen size */
+  .mobile-only {
+    @apply block lg:hidden;
+  }
+  
+  .desktop-only {
+    @apply hidden lg:block;
+  }
+  
+  .tablet-up {
+    @apply hidden md:block;
+  }
+  
+  /* Touch-friendly buttons for mobile */
+  .touch-button {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
+  /* Prevent text overflow on mobile */
+  .text-truncate-mobile {
+    @apply truncate max-w-full;
+  }
+}
+
+/* Responsive breakpoints */
+@media (max-width: 640px) {
+  .sm\:hidden {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .md\:hidden {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .lg\:hidden {
+    display: none !important;
+  }
+}
+
+/* Mobile menu animation */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.mobile-menu-enter {
+  animation: slideInRight 0.3s ease-out;
+}
+
+.mobile-menu-exit {
+  animation: slideOutRight 0.3s ease-in;
+}
+
+/* Improve touch targets on mobile */
+@media (max-width: 768px) {
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Increase spacing for mobile */
+  .mobile-spacing > * + * {
+    margin-top: 1rem;
+  }
+}
+
+/* Prevent horizontal scroll on mobile */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Smooth scrolling for better mobile experience */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Improve focus states for accessibility */
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Better text rendering on mobile */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Mobile Menu Specific Styles */
+@media (max-width: 1024px) {
+  /* Prevent body scroll when menu is open */
+  body.menu-open {
+    overflow: hidden !important;
+  }
+  
+  /* Mobile menu backdrop */
+  .mobile-backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+  }
+  
+  /* Ensure menu items are touch-friendly */
+  .mobile-menu-item {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+  }
+  
+  /* Smooth slide animation */
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideOutRight {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+  
+  .mobile-menu-enter {
+    animation: slideInRight 0.3s ease-out;
+  }
+  
+  .mobile-menu-exit {
+    animation: slideOutRight 0.3s ease-in;
+  }
+}
+
+/* Hamburger Menu Icon Styles */
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 2px;
+  background: #374151;
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu.open .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-menu.open .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.open .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile dropdown animations */
+.mobile-dropdown {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.mobile-dropdown.open {
+  max-height: 500px;
+  transition: max-height 0.5s ease-in;
+}
+
+/* Improve mobile touch experience */
+@media (max-width: 768px) {
+  /* Larger tap targets */
+  button, 
+  a, 
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better spacing for mobile */
+  .mobile-spacing > * + * {
+    margin-top: 8px;
+  }
+  
+  /* Prevent text selection on interactive elements */
+  button, 
+  a {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+}
+
+/* Ensure content doesn't shift when menu opens */
+html, body {
+  width: 100%;
+  position: relative;
+}
+
+/* Better focus visibility for accessibility */
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
